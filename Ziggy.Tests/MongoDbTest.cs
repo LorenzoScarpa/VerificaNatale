@@ -16,19 +16,7 @@ namespace Ziggy.Tests
             MongoDbMock dbm = new MongoDbMock();
             order.Id = "123";
             order.Status = Status.ReadyToSend;
-            try
-            {
-                dbm.EditOrderStatus(order.Id, order.Status);
-                Assert.Fail("EditOrderStatus non ha lanciato l'eccezione");
-            }
-            catch (ArgumentException ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(Order));
-            }
+            Assert.IsTrue(dbm.EditOrderStatus(order.Id, order.Status));
         }
 
         [TestMethod]
@@ -37,15 +25,8 @@ namespace Ziggy.Tests
             Order order = new Order();
             MongoDbMock dbm = new MongoDbMock();
             order.Id = "321";
-            try
-            {
-                dbm.GetOrderById(order.Id);
-                Assert.Fail("GetOrderById non ha lanciato l'eccezione");
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
-            }
+            Order result = dbm.GetOrderById(order.Id);
+            Assert.IsInstanceOfType(result, typeof(Order));
         }
 
         [TestMethod]
@@ -54,6 +35,18 @@ namespace Ziggy.Tests
             MongoDbMock dbm = new MongoDbMock();
             var results = dbm.GetAllOrders();
             Assert.IsInstanceOfType(results, typeof(List<Order>));
+        }
+
+        [TestMethod]
+        public void GetUser_Should_Return_User()
+        {
+            MongoDbMock dbm = new MongoDbMock();
+            User user = new User
+            {
+                Email = "test@gmail.com",
+                Password = "password"
+            };
+            Assert.IsInstanceOfType(user, typeof(User));
         }
 
         [TestMethod]

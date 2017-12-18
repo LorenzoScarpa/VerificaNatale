@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggy.Tests", "Ziggy.Tests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggy.Classes", "Ziggy.Classes\Ziggy.Classes.csproj", "{782ED329-B6AA-4E55-B298-7838F6DC1D4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggy.IntegrationTests", "Ziggy.IntegrationTests\Ziggy.IntegrationTests.csproj", "{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{782ED329-B6AA-4E55-B298-7838F6DC1D4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{782ED329-B6AA-4E55-B298-7838F6DC1D4A}.Release|x86.ActiveCfg = Release|Any CPU
 		{782ED329-B6AA-4E55-B298-7838F6DC1D4A}.Release|x86.Build.0 = Release|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Debug|x86.Build.0 = Debug|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Release|x86.ActiveCfg = Release|Any CPU
+		{8453A478-EB62-4B8C-AF5A-B8DD8A55876B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

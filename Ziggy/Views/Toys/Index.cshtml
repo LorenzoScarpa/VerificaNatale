@@ -12,7 +12,14 @@
 {
     if (Session["ScreenName"].ToString() == "SantaTheBest" || Session["ScreenName"].ToString() == "FabulousZiggy")
     {
-        <table>
+        <table class="table table-hover table-striped">
+            <thead style="background:black; color:white;">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
             @foreach (var toy in Model.EntityList)
             {
                 <tr>

@@ -10,6 +10,7 @@ namespace Ziggy.Classes
     {
         public User GetUser(User user)
         {
+            user.EmailAndPasswordHasNotValueEx();
             IMongoCollection<User> usersCollection = database.GetCollection<User>("users");
             return usersCollection.Find(_ => _.Email == user.Email && _.Password == user.Password).FirstOrDefault();
         }

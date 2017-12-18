@@ -23,5 +23,13 @@ namespace Ziggy.Classes
 
         [BsonElement("password_clear_text")]
         public string PasswordClearText { get; set; }
+
+        public void EmailAndPasswordHasNotValueEx()
+        {
+            if (Password == null || Email == null)
+            {
+                throw new System.ArgumentNullException();
+            }
+        }
     }
 }
