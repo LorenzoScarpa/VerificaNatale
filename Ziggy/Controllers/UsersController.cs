@@ -1,39 +1,63 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Cryptography;
+using System.Text;
+using System.Web.Mvc;
 using Ziggy.Classes;
-using MongoDB.Bson;
-using Ziggy.Models;
-using System;
-using System.Linq;
 using ZiggyMongoDB = Ziggy.Classes.MongoDb;
 
 namespace Ziggy.Controllers
 {
     public class UsersController : Controller
     {
-
-        // GET
-
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(User user)
         {
             ZiggyMongoDB db = new ZiggyMongoDB();
+            user.Password = SHA512(user.Password);
             var usr = db.GetUser(user);
             if (usr != null)
             {
-                Session["UserName"] = usr.Email.ToString();
                 Session["ScreenName"] = usr.ScreenName.ToString();
-                Session["ID"] = usr.Id.ToString();
-                return RedirectToAction($"../Home");
+                return RedirectToAction("Home");
             }
             else
             {
                 ModelState.AddModelError("", "Username or Password Error");
             }
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            if (Session["ScreenName"] != null)
+            {
+                Session.Clear();
+                return RedirectToAction("Login");
+            }
+            return View();
+        }
+
+        public ActionResult Home()
+        {
+            return View();
+        }
+
+        private string SHA512(string String)
+        {
+            byte[] hashValue;
+            byte[] message = Encoding.UTF8.GetBytes(String);
+            SHA512Managed hashString = new SHA512Managed();
+            hashValue = hashString.ComputeHash(message);
+            StringBuilder sb = new StringBuilder();
+            foreach(byte b in hashValue)
+            {
+                sb.AppendFormat("{0:x2}", b);
+            }
+            return sb.ToString();
         }
     }
 }

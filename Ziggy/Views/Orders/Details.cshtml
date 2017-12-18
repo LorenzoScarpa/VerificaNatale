@@ -1,0 +1,68 @@
+﻿@using Ziggy.Classes;
+@model Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@try
+{
+    if (Session["ScreenName"].ToString() == "FabulousZiggy")
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kid)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Kid)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RequestDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd>
+                @using (Html.BeginForm("Edit", "Orders", new { id = Model.Id }))
+                {
+                    <select id="Status" name="Status" class="btn btn-default btn dropdown-toggle">
+                        @foreach (var status in Enum.GetValues(typeof(Status)))
+                        {
+                            if (Model.Status.Equals(@status))
+                            {
+                                <option value="@status" selected="selected">@status</option>
+                            }
+                            else
+                            {
+                                <option value="@status">@status</option>
+                            }
+                        }
+                    </select>
+                    <input id="Edit" type="submit" value="Edit" class="btn btn-default" />
+                }
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Toys)
+            </dt>
+            <dd>
+                <table class="table table-condensed">
+                    @foreach (var toy in Model.Toys)
+                    {
+                        <tr>
+                            <td>@toy.Name</td>
+                        </tr>
+                    }
+                </table>
+            </dd>
+        </dl>
+    }
+}
+catch (NullReferenceException e)
+{
+    <h1>you are not autorizated to see these contents</h1>
+}
+

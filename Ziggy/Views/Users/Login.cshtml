@@ -1,10 +1,8 @@
 ﻿@using Ziggy.Models
 @model Ziggy.Classes.User
-
 @{
     ViewBag.Title = "title";
 }
-
 @using (Html.BeginForm("Home"))
 {
     @Html.AntiForgeryToken()
@@ -12,9 +10,6 @@
         <div class="row">
             <div class="col-xs-8">
                 <h2 style="text-align:center;">Login</h2>
-            </div>
-            <div class="col-xs-4 form-group" style="margin-top:20px;">
-                <input id="login" type="submit" value="Login" class=" btn btn-success" />
             </div>
         </div>
         <hr />
@@ -33,17 +28,10 @@
                 @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <!-- Details -->
-        @*<div id="auth-status" style="visibility:hidden;">
-                <div id="auth-loggedin" style="display: none">
-                    Hi, <span id="displayname"></span><br />
-                    Your Facebook ID : <span id="fbId"></span><br />
-                    Your Email : <span id="displayEmail"></span><br />
-                    Your Sex: <span id="gender"></span><br />
-                    Your Date of Birth : <span id="DOB"></span><br />
-                </div>
-            </div>*@
+        <div class="form-group">
+            <div class="col-md-6" style="margin-top:20px;">
+                <input id="login" type="submit" value="Login" class=" btn btn-success" />
+            </div>
+        </div>
     </div>
-
 }

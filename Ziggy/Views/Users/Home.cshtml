@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+@if (Session["ScreenName"] != null)
+{
+    <h2>Welcome @Session["ScreenName"]</h2>
+}
+

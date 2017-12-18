@@ -16,7 +16,7 @@ namespace Ziggy.Classes
         public string Email { get; set; }
 
         [BsonElement("isAdmin")]
-        public string IsAdmin { get; set; }
+        public bool IsAdmin { get; set; }
 
         [BsonElement("password")]
         public string Password { get; set; }

@@ -1,0 +1,29 @@
+﻿@using Ziggy.Models
+@{
+    ViewBag.Title = "Toys";
+}
+@model Toys
+<div class="row">
+    <div class="col-xs-8">
+        <h2 style="text-align:center;">@ViewBag.Title</h2>
+    </div>
+</div>
+@try
+{
+    if (Session["ScreenName"].ToString() == "SantaTheBest" || Session["ScreenName"].ToString() == "FabulousZiggy")
+    {
+        <table>
+            @foreach (var toy in Model.EntityList)
+            {
+                <tr>
+                    <td>@toy.Name</td>
+                    <td>@toy.Cost</td>
+                    <td>@toy.Amount</td>
+                </tr>
+            }
+        </table>
+    }
+}catch(NullReferenceException e)
+{
+    <h1>you are not autorizated to see these contents</h1>
+}
